@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, Boolean, Text, ForeignKey
 from sqlalchemy_utils.types import ChoiceType
 from sqlalchemy.orm import relationship
 
+
 class User(Base):
     __tablename__ = "user"
     id = Column(Integer, primary_key=True)
@@ -19,16 +20,16 @@ class User(Base):
 
 class Order(Base):
     ORDER_STATUS = (
-        ('PENDING', 'pending'),
-        ('ACCEPTED', 'accepted'),
-        ('REJECTED', 'rejected'),
-        ('DELIVERED', 'delivered'),
+        ("PENDING", "pending"),
+        ("ACCEPTED", "accepted"),
+        ("REJECTED", "rejected"),
+        ("DELIVERED", "delivered"),
     )
     PIZZA_SIZE = (
-        ('SMALL', 'small'),
-        ('MEDIUM', 'medium'),
-        ('LARGE', 'large'),
-        ('EXTRA_LARGE', 'extra_large'),
+        ("SMALL", "small"),
+        ("MEDIUM", "medium"),
+        ("LARGE", "large"),
+        ("EXTRA_LARGE", "extra_large"),
     )
 
     __tablename__ = "orders"
@@ -38,5 +39,6 @@ class Order(Base):
     pizza_size = Column(ChoiceType(PIZZA_SIZE), default="SMALL")
     user_id = Column(Integer, ForeignKey("user.id"))
     user = relationship("User", back_populates="orders")
+
     def __repr__(self):
         return f"<Order {self.name}>"
