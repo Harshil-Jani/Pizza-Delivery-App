@@ -51,3 +51,15 @@ class OrderModel(BaseModel):
                 "user_id": 1,
             }
         }
+
+
+class OrderStatusModel(BaseModel):
+    order_status: Optional[str] = "PENDING"
+
+    class Config:
+        orm_mode = True
+        schema_extra = {
+            "example": {
+                "order_status": "PENDING",
+            }
+        }
