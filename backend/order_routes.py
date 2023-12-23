@@ -161,6 +161,7 @@ async def update_order_status(
         session.commit()
         return jsonable_encoder(order)
 
+
 @order_router.delete("/order/delete/{id}")
 async def delete_order(id: int, Authorize: AuthJWT = Depends()):
     try:
