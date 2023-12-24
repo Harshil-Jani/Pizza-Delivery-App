@@ -89,7 +89,7 @@ async def get_order_by_id(id: int, Authorize: AuthJWT = Depends()):
     )
 
 
-@order_router.get("/user_orders")
+@order_router.get("/user/orders")
 async def get_user_orders(Authorize: AuthJWT = Depends()):
     try:
         Authorize.jwt_required()
@@ -103,7 +103,7 @@ async def get_user_orders(Authorize: AuthJWT = Depends()):
     return jsonable_encoder(user.orders)
 
 
-@order_router.get("/user_order/{id}")
+@order_router.get("/user/order/{id}")
 async def get_user_order_by_id(id: int, Authorize: AuthJWT = Depends()):
     try:
         Authorize.jwt_required()
@@ -141,7 +141,7 @@ async def update_order(id: int, new_order: OrderModel, Authorize: AuthJWT = Depe
     return jsonable_encoder(order)
 
 
-@order_router.put("/order/update_status/{id}")
+@order_router.put("/order/status/{id}")
 async def update_order_status(
     id: int, new_order: OrderStatusModel, Authorize: AuthJWT = Depends()
 ):
