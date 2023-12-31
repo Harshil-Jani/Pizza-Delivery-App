@@ -1,5 +1,12 @@
 version: "3.8"
 services:
+  pizza_app:
+    build: .
+    container_name: pizza_backend
+    restart: always
+    command: bash -c "cd backend && pip install uvicorn psycopg2 && uvicorn main:app --reload --host 0.0.0.0"
+    ports:
+      - "8000:8000"
   db:
     image: postgres
     container_name: local_pgdb
