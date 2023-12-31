@@ -5,3 +5,4 @@ python-dotenv==1.0.0
 SQLAlchemy==2.0.23
 SQLAlchemy_Utils==0.41.1
 Werkzeug==3.0.1
+uvicorn==0.25.0
